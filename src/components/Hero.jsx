@@ -2,11 +2,13 @@ import { TypeAnimation } from "react-type-animation";
 import Card from "../assets/Card.jpg";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useRef } from "react";
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiMapPin, FiCalendar } from "react-icons/fi";
+import { 
+  FiArrowRight, FiGithub, FiLinkedin, FiMail, FiMapPin, FiCalendar
+} from "react-icons/fi";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-8">
+    <section className="min-h-screen flex items-center justify-center px-4 sm:px-8 py-20">
       <div className="max-w-6xl w-full grid md:grid-cols-2 items-center gap-10 lg:gap-16">
         
         {/* LEFT SIDE */}
@@ -57,28 +59,28 @@ export default function Hero() {
           <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-lg">
             I craft modern, responsive, and interactive web experiences 
             using <span className="font-semibold text-black dark:text-white">React</span>, 
-            <span className="font-semibold text-black dark:text-white"> Tailwind</span>, and 
-            <span className="font-semibold text-black dark:text-white"> Framer Motion</span>.
+            <span className="font-semibold text-black dark:text-white"> Laravel</span>, and 
+            <span className="font-semibold text-black dark:text-white"> Tailwind</span>.
           </p>
 
           {/* CTA BUTTON - DOWNLOAD CV */}
-<div className="flex flex-wrap gap-4 pt-4">
-  <motion.a
-    href="/CV_Dimas_Gerrad_Handjaya.pdf"
-    download="CV_Dimasgerrad.pdf"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="group px-6 py-3 bg-black text-white 
-               dark:bg-white dark:text-black 
-               rounded-full font-medium 
-               shadow-lg hover:shadow-xl
-               transition-all duration-300
-               flex items-center gap-2"
-  >
-    Download CV
-    <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-  </motion.a>
-</div>
+          <div className="flex flex-wrap gap-4 pt-4">
+            <motion.a
+              href="/CV_Dimas_Gerrad_Handjaya.pdf"
+              download="CV_Dimasgerrad.pdf"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group px-6 py-3 bg-black text-white 
+                         dark:bg-white dark:text-black 
+                         rounded-full font-medium 
+                         shadow-lg hover:shadow-xl
+                         transition-all duration-300
+                         flex items-center gap-2"
+            >
+              Download CV
+              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+          </div>
 
           {/* SOCIAL LINKS */}
           <motion.div 
@@ -115,14 +117,14 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT SIDE - MODERN FULL IMAGE CARD */}
+        {/* RIGHT SIDE - SIMPLE CLEAN CARD */}
         <motion.div 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="flex justify-center md:justify-end"
         >
-          <ModernImageCard />
+          <SimpleImageCard />
         </motion.div>
 
       </div>
@@ -131,10 +133,10 @@ export default function Hero() {
 }
 
 /* =========================
-   MODERN FULL IMAGE CARD WITH OVERLAY
+   SIMPLE CLEAN CARD - TIDAK MENUTUPI FOTO
 ========================= */
 
-function ModernImageCard() {
+function SimpleImageCard() {
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -174,124 +176,72 @@ function ModernImageCard() {
         className="relative w-72 md:w-80 lg:w-96 
                    rounded-3xl 
                    overflow-hidden
-                   shadow-2xl dark:shadow-[0_0_50px_rgba(255,255,255,0.15)]
+                   shadow-2xl dark:shadow-[0_0_50px_rgba(255,255,255,0.1)]
                    transition-all duration-300
                    cursor-pointer
                    group"
       >
-        {/* BACKGROUND IMAGE */}
+        {/* BACKGROUND IMAGE - FULL PHOTO */}
         <div className="absolute inset-0">
           <img
             src={Card}
-            alt="Dimas Gerrad Background"
+            alt="Dimas Gerrad"
             className="w-full h-full object-cover
-                       group-hover:scale-110
+                       group-hover:scale-105
                        transition-transform duration-700"
           />
         </div>
 
-        {/* DARK OVERLAY - GRADIENT */}
+        {/* GRADIENT OVERLAY - HANYA DI ATAS DAN BAWAH */}
         <div className="absolute inset-0 
                       bg-linear-to-t 
-                      from-black/90 via-black/50 to-black/30
-                      group-hover:from-black/95 group-hover:via-black/60
-                      transition-colors duration-500" />
+                      from-black/70 via-transparent to-black/40
+                      group-hover:from-black/80 group-hover:to-black/50
+                      transition-all duration-500" />
 
-        {/* CONTENT */}
-        <div className="relative z-10 h-full min-h-120
-                      flex flex-col justify-end
-                      p-8 text-white"
+        {/* CONTENT - HANYA ATAS DAN BAWAH */}
+        <div className="relative z-10 h-full min-h-112.5
+                      flex flex-col justify-between
+                      p-6 text-white"
              style={{ transform: "translateZ(30px)" }}>
           
-          {/* BADGE - LOCATION */}
+          {/* TOP BADGE - LOCATION */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="absolute top-6 right-6
-                       bg-white/20 backdrop-blur-md
-                       px-4 py-2 rounded-full
-                       border border-white/30
-                       text-sm font-medium
-                       flex items-center gap-2"
+            className="flex justify-end"
           >
-            <FiMapPin className="text-white/80" />
-            <span>Palembang, ID</span>
+            <div className="bg-black/50 backdrop-blur-md
+                         px-3 py-1.5 rounded-full
+                         border border-white/30
+                         text-sm font-medium
+                         flex items-center gap-2">
+              <FiMapPin className="text-white/80 text-xs" />
+              <span>Palembang, ID</span>
+            </div>
           </motion.div>
 
-          {/* NAME & TITLE */}
+          {/* BOTTOM SECTION - NAME & TITLE SEDERHANA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
+            className="text-left"
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-2">
+            <h3 className="text-2xl md:text-3xl font-bold mb-1">
               Dimas Gerrad
             </h3>
-            <p className="text-white/80 text-lg flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-white/60"></span>
+            <p className="text-white/80 text-sm flex items-center gap-2">
+              <span className="w-6 h-0.5 bg-white/60"></span>
               Full Stack Developer
             </p>
-          </motion.div>
-
-          {/* DIVIDER */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="w-full h-0.5 bg-white/30 my-6"
-          />
-
-          {/* STATS GRID */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="grid grid-cols-3 gap-4"
-          >
-            <div>
-              <p className="text-2xl font-bold">10+</p>
-              <p className="text-white/60 text-xs uppercase tracking-wider">Projects</p>
+            
+            {/* AVAILABILITY */}
+            <div className="flex items-center gap-2 mt-3 text-xs text-white/70">
+              <FiCalendar className="text-sm" />
+              <span>Available for projects</span>
             </div>
-            <div>
-              <p className="text-2xl font-bold">1+</p>
-              <p className="text-white/60 text-xs uppercase tracking-wider">Years</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold">∞</p>
-              <p className="text-white/60 text-xs uppercase tracking-wider">Passion</p>
-            </div>
-          </motion.div>
-
-          {/* TECH STACK TAGS */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-6 flex flex-wrap gap-2"
-          >
-            {["React", "Laravel", "Tailwind", "Framer"].map((tech, i) => (
-              <span key={i} 
-                    className="px-3 py-1 text-xs
-                             bg-white/20 backdrop-blur-sm
-                             border border-white/30
-                             rounded-full">
-                {tech}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* EXPERIENCE BADGE - BOTTOM RIGHT */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7 }}
-            className="absolute bottom-6 left-8
-                       flex items-center gap-2
-                       text-white/80 text-sm"
-          >
-            <FiCalendar />
-            <span>Available Now</span>
           </motion.div>
         </div>
 
@@ -302,10 +252,11 @@ function ModernImageCard() {
             top: useTransform(y, [-100, 100], ["30%", "70%"]),
           }}
           className="absolute w-48 h-48 
-                     bg-white/20 
+                     bg-white/10 
                      rounded-full blur-3xl 
                      pointer-events-none
-                     mix-blend-overlay"
+                     opacity-0 group-hover:opacity-100
+                     transition-opacity duration-500"
         />
       </motion.div>
     </div>
